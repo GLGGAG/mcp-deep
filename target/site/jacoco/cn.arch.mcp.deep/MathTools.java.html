@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MathTools.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">hll-mcp-svr</a> &gt; <a href="index.source.html" class="el_package">cn.arch.mcp.deep</a> &gt; <span class="el_source">MathTools.java</span></div><h1>MathTools.java</h1><pre class="source lang-java linenums">package cn.arch.mcp.deep;
+
+<span class="nc" id="L3">public class MathTools {</span>
+
+    public static int add(int a, int b) {
+<span class="fc" id="L6">        return a + b;</span>
+    }
+
+    public static int subtract(int a, int b) {
+<span class="fc" id="L10">        return a - b;</span>
+    }
+
+    public static int multiply(int a, int b) {
+<span class="fc" id="L14">        return a * b;</span>
+    }
+
+    public static double divide(int a, int b) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (b == 0) {</span>
+<span class="fc" id="L19">            throw new IllegalArgumentException(&quot;Division by zero is not allowed&quot;);</span>
+        }
+<span class="fc" id="L21">        return (double) a / b;</span>
+    }
+
+    public static long factorial(int n) {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        if (n &lt; 0) {</span>
+<span class="fc" id="L26">            throw new IllegalArgumentException(&quot;Factorial is not defined for negative numbers&quot;);</span>
+        }
+<span class="fc bfc" id="L28" title="All 4 branches covered.">        if (n == 0 || n == 1) {</span>
+<span class="fc" id="L29">            return 1;</span>
+        }
+<span class="fc" id="L31">        long result = 1;</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        for (int i = 2; i &lt;= n; i++) {</span>
+<span class="fc" id="L33">            result *= i;</span>
+        }
+<span class="fc" id="L35">        return result;</span>
+    }
+
+    public static boolean isPrime(int n) {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if (n &lt;= 1) {</span>
+<span class="fc" id="L40">            return false;</span>
+        }
+<span class="fc bfc" id="L42" title="All 2 branches covered.">        if (n &lt;= 3) {</span>
+<span class="fc" id="L43">            return true;</span>
+        }
+<span class="fc bfc" id="L45" title="All 4 branches covered.">        if (n % 2 == 0 || n % 3 == 0) {</span>
+<span class="fc" id="L46">            return false;</span>
+        }
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for (int i = 5; i * i &lt;= n; i += 6) {</span>
+<span class="pc bpc" id="L49" title="1 of 4 branches missed.">            if (n % i == 0 || n % (i + 2) == 0) {</span>
+<span class="fc" id="L50">                return false;</span>
+            }
+        }
+<span class="fc" id="L53">        return true;</span>
+    }
+
+    public static int gcd(int a, int b) {
+<span class="fc" id="L57">        a = Math.abs(a);</span>
+<span class="fc" id="L58">        b = Math.abs(b);</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        while (b != 0) {</span>
+<span class="fc" id="L60">            int temp = b;</span>
+<span class="fc" id="L61">            b = a % b;</span>
+<span class="fc" id="L62">            a = temp;</span>
+<span class="fc" id="L63">        }</span>
+<span class="fc" id="L64">        return a;</span>
+    }
+
+    public static int power(int base, int exponent) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if (exponent &lt; 0) {</span>
+<span class="fc" id="L69">            throw new IllegalArgumentException(&quot;Negative exponents are not supported for integer results&quot;);</span>
+        }
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (exponent == 0) {</span>
+<span class="fc" id="L72">            return 1;</span>
+        }
+<span class="fc" id="L74">        int result = 1;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        for (int i = 0; i &lt; exponent; i++) {</span>
+<span class="fc" id="L76">            result *= base;</span>
+        }
+<span class="fc" id="L78">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
